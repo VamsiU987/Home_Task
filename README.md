@@ -10,7 +10,7 @@ All project paths are **relative**, so no fixed project directory is required.
 
 - Windows operating system
 - ROS 2 Jazzy installed using Pixi
-- Python installed and available in PATH
+- Python is installed and available in the PATH
 
 Please follow the installation instructions provided in:
 
