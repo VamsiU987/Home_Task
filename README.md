@@ -1,88 +1,174 @@
-# Image Publisher & Subscriber (ROS 2 Jazzy -- Windows)
+# 🖼️ ROS 2 Image Publisher & Subscriber
 
-This project demonstrates a simple image publisher and subscriber using ROS 2 Jazzy on Windows.
+This project demonstrates a simple image publisher and subscriber using **ROS 2** and **Python**.
 
-The repository can be cloned to **any location** on your system.  
-All project paths are **relative**, so no fixed project directory is required.
-------------------------------------------------------------------------
+The repository is **portable** and can be cloned into **any folder**.  
+All project paths are **relative**, except for the ROS 2 installation path.
 
-## Prerequisites
+---
 
-- Windows operating system
-- ROS 2 Jazzy installed using Pixi
-- Python is installed and available in the PATH
+## 📥 Clone the Repository
 
-Please follow the installation instructions provided in:
+Clone the repository using Git:
 
-installation/ROS2_Jazzy_Windows_Setup_Guide.pdf
+```bash
+git clone <repository-url>
+```
 
-------------------------------------------------------------------------
+Navigate into the cloned folder:
 
-## Project Structure
+```bash
+cd <path-to-cloned-repo>
+```
 
-project-root/
-├── publisher/
-│ └── image_publisher.py
-├── subscriber/
-│ └── image_subscriber.py
-├── output/
-│ ├── images/
-│ └── metadata.json
-└── installation/
-└── ROS2_Jazzy_Windows_Setup_Guide.pdf
+You can clone this repository **anywhere** on your system.
 
-------------------------------------------------------------------------
+---
 
-## How to Run the Project
+## ⚙️ Dependencies / Prerequisites
 
-You need **two terminals**.
+### Common (All Operating Systems)
+- Python 3.8 or newer
+- ROS 2 (Jazzy or compatible)
+- Git
 
-### Step 1: Set up ROS 2 environment (both terminals)
+### Windows
+- Windows 10 or newer
+- Pixi
+- ROS 2 Windows binary installation
 
-cd C:\pixi_ws
+### Linux
+- Ubuntu 22.04 or newer
+- ROS 2 installed via apt
+
+### macOS
+- macOS 12 or newer
+- ROS 2 installed via Homebrew or source build
+
+---
+
+## 🛠️ Installation
+
+### 🪟 Windows (Pixi-based ROS 2)
+
+Two paths are important:
+
+- `<ros-workspace>`  
+  ROS 2 Pixi workspace  
+  Example: `C:\pixi_ws`
+
+- `<project-path>`  
+  Path where this repository is cloned  
+  (can be any folder)
+
+---
+
+### 🐧 Linux
+
+Install ROS 2:
+
+```bash
+sudo apt install ros-<ros-distro>-desktop
+```
+
+Source ROS 2:
+
+```bash
+source /opt/ros/<ros-distro>/setup.bash
+```
+
+---
+
+### 🍎 macOS
+
+Install ROS 2 using Homebrew or from source.
+
+Source ROS 2:
+
+```bash
+source <ros-install-path>/setup.bash
+```
+
+---
+
+## ▶️ How to Run the Project
+
+You need **two terminals**:
+- One for the publisher
+- One for the subscriber
+
+---
+
+### 🪟 Windows
+
+#### Terminal 1 — Publisher
+
+```bat
+cd <ros-workspace>
 pixi shell
-call C:\pixi_ws\ros2-windows\local_setup.bat
+call <ros-workspace>\ros2-windows\local_setup.bat
 
-------------------------------------------------------------------------
-
-### Step 2: Navigate to the project folder
-
-cd <path-to-cloned-repository>
-
-Example: cd D:\projects\image-pub-sub
-
-------------------------------------------------------------------------
-
-### Step 3: Set ROS Domain ID (both terminals)
-
+cd /d <project-path>
 set ROS_DOMAIN_ID=0
-
-------------------------------------------------------------------------
-
-### Step 4: Run Publisher (Terminal 1)
-
 python publisher\image_publisher.py
+```
 
-------------------------------------------------------------------------
+#### Terminal 2 — Subscriber
 
-### Step 5: Run Subscriber (Terminal 2)
+```bat
+cd <ros-workspace>
+pixi shell
+call <ros-workspace>\ros2-windows\local_setup.bat
 
+cd /d <project-path>
+set ROS_DOMAIN_ID=0
 python subscriber\image_subscriber.py
+```
 
-------------------------------------------------------------------------
+---
 
-## Output
+### 🐧 Linux / 🍎 macOS
 
--   Images are saved in: output/images/
+In **both terminals**:
 
--   Metadata is saved in: output/metadata.json
+```bash
+source /opt/ros/<ros-distro>/setup.bash
+cd <project-path>
+export ROS_DOMAIN_ID=0
+```
 
-All output paths are **relative to the project folder**.
+Terminal 1:
 
-------------------------------------------------------------------------
+```bash
+python publisher/image_publisher.py
+```
 
-## Notes
+Terminal 2:
 
--   Publisher and Subscriber must run in **separate terminals**
--   The repository can be cloned to **any location**
--   Only the ROS 2 installation path is fixed
+```bash
+python subscriber/image_subscriber.py
+```
+
+---
+
+## 📂 Output
+
+All output is generated relative to the project directory.
+
+- Images are saved in:
+  ```
+  output/images/
+  ```
+
+- Metadata is saved in:
+  ```
+  output/metadata.json
+  ```
+
+---
+
+## 📝 Notes
+
+- The repository can be cloned to **any folder**
+- No project-specific absolute paths are required
+- Only the ROS 2 installation path depends on the system
